@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class BallLogic : MonoBehaviour
 {
-    Rigidbody2D ballRB;
+    public Rigidbody2D ballRB;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
      float xVelocityScale, yVelocityScale = 5.0f;
@@ -33,9 +33,30 @@ public class BallLogic : MonoBehaviour
     }
 
 
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        ICollideable collideableObj = collision2D.collider.GetComponent<ICollideable>();
+        Debug.LogWarning(collision2D.collider.name);
+        if(collideableObj != null)
+        {
+            Debug.Log("Found collidable!");
+            collideableObj.collide(this, collision2D);
+        }
+        else
+        {
+            Debug.LogError("Couldn't find collidable Interface in collision!");
+        }
+    }
+
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawRay(new Ray( transform.position, (Vector3) launchDir));
     }
+}
+
+public interface ICollideable
+{
+    void collide(BallLogic ball, Collision2D collision2D);
+    
 }
