@@ -1,18 +1,24 @@
+
 using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class BallLogic : MonoBehaviour
 {
+    [SerializeField] 
+    float trailTimeOffset;
     public Rigidbody2D ballRB;
+    TrailRenderer trail;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
-     float xVelocityScale, yVelocityScale = 5.0f;
+     float initalSpeed = 5.0f;
      Vector2 launchDir;
 
     void Start()
     {
         ballRB = GetComponent<Rigidbody2D>();
+        trail = GetComponentInChildren<TrailRenderer>();
 
         // Setup inital direction
         bool isStartingLeft = UnityEngine.Random.Range(0.0f, 1.0f) >= 0.5f;
@@ -22,13 +28,11 @@ public class BallLogic : MonoBehaviour
             x = -1.0f;
         }
 
-        float y = Random.Range(-1.0f, 1.0f);
-
-        x *= xVelocityScale;
-        y *= yVelocityScale;
+        float y = UnityEngine.Random.Range(-1.0f, 1.0f);
         Vector2 initialVelocity = new Vector2(x, y);
+        initialVelocity = initialVelocity.normalized * initalSpeed;
         launchDir = initialVelocity;
-        ballRB.AddForce(initialVelocity, ForceMode2D.Impulse);
+        ballRB.linearVelocity = initialVelocity;
         
     }
 
@@ -48,10 +52,15 @@ public class BallLogic : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void updateTrailLength()
     {
-        Gizmos.color = Color.blue;
-        // Gizmos.DrawRay(new Ray( transform.position, (Vector3) launchDir));
+        double baseSpeed = 10;
+        float trailLengthTime = (float) math.log10((ballRB.linearVelocity.magnitude/baseSpeed) + trailTimeOffset);
+        trail.time = trailLengthTime;
+    }
+    void Update()
+    {
+        updateTrailLength();
     }
 }
 
