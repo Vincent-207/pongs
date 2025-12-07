@@ -51,7 +51,7 @@ public class BallLogic : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(new Ray( transform.position, (Vector3) launchDir));
+        // Gizmos.DrawRay(new Ray( transform.position, (Vector3) launchDir));
     }
 }
 
