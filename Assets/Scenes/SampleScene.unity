@@ -5811,8 +5811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   move: {fileID: 123839140}
   moveSpeed: 1
-  bottomBound: -2
-  topBound: 2
+  bottomBound: -4
+  topBound: 4
 --- !u!1 &713768449
 GameObject:
   m_ObjectHideFlags: 0
@@ -11218,7 +11218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4d0221fc5f0744abf491d250cc0c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  ball: {fileID: 0}
+  ball: {fileID: 642411965}
+  moveSpeed: 1
+  lowerBound: -4
+  upperBound: 4
 --- !u!1 &892878015
 GameObject:
   m_ObjectHideFlags: 0
