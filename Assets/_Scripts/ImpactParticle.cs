@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ImpactParticle : MonoBehaviour
 {
-    ParticleSystem impactParticles;
+    public ParticleSystem particleSystem;
     void Start()
     {
-        impactParticles = GetComponent<ParticleSystem>();
+        particleSystem = GetComponent<ParticleSystem>();
     }
 
     public void PlayImpact(Vector2 position, Transform emitTarget, float weight)
@@ -13,13 +13,13 @@ public class ImpactParticle : MonoBehaviour
         transform.position = position;
 
         transform.LookAt(emitTarget, Vector3.up);
-        impactParticles.Play();
+        particleSystem.Play();
     }
     public void PlayImpact(Vector2 position, Vector2 emitDirection, float weight)
     {
         transform.position = position;
         
         transform.rotation = Quaternion.LookRotation(emitDirection, Vector3.up);
-        impactParticles.Play();
+        particleSystem.Play();
     }
 }

@@ -3,11 +3,20 @@ using UnityEngine;
 public class Wall : MonoBehaviour, ICollideable
 {
     [SerializeField]
-    ImpactParticle impactParticle;
+    GameObject impactParticlePrefab;
+    [SerializeField]
+    int particleSystemPoolSize;
+    ImpactParticle[] impactParticles;
+    int currentImpactParticle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        impactParticle = GetComponentInChildren<ImpactParticle>();
+        impactParticles = new ImpactParticle[particleSystemPoolSize];
+        for(int i = 0; i < particleSystemPoolSize; i++)
+        {
+            GameObject childParticleSystem = Instantiate(impactParticlePrefab, transform);
+            impactParticles[i] = childParticleSystem.GetComponent<ImpactParticle>();
+        }
     }
 
     // Update is called once per frame
@@ -37,8 +46,20 @@ public class Wall : MonoBehaviour, ICollideable
         Debug.DrawRay(ball.transform.position, ball.ballRB.linearVelocity, Color.yellow);
         Debug.DrawRay(ball.transform.position, bouncedVelocity, Color.red);
         // Debug.Log("Ball SPEED: " + ball.ballRB.linearVelocity); 
-        impactParticle.PlayImpact(contactPoint2D.point, contactPoint2D.normal, 1);
+        playImpact(contactPoint2D.point, contactPoint2D.normal, 1);
         // ball.ballRB.linearVelocity = bouncedVelocity;
         // Debug.Break();
+    }
+
+    void playImpact(Vector2 position, Vector2 direction, float weight)
+    {
+        if(impactParticles[currentImpactParticle].GetComponent<ParticleSystem>().isPlaying)
+        {
+            Debug.LogWarning("Not enough particles, interrupting this system");
+            impactParticles[currentImpactParticle].GetComponent<ParticleSystem>().Stop();
+        }
+
+        impactParticles[currentImpactParticle].PlayImpact(position, direction, weight);
+        
     }
 }
