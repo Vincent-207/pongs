@@ -5436,7 +5436,7 @@ Transform:
   m_GameObject: {fileID: 619394800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5476,6 +5476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BallLogic
   trailTimeOffset: 1
   ballRB: {fileID: 0}
+  trail: {fileID: 0}
   initalSpeed: 5
 --- !u!212 &642411966
 SpriteRenderer:
@@ -5545,7 +5546,7 @@ Transform:
   m_GameObject: {fileID: 642411964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5886,7 +5887,7 @@ Transform:
   m_GameObject: {fileID: 713768449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11219,7 +11220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ball: {fileID: 642411965}
-  moveSpeed: 0.1
+  moveSpeed: 0.05
   lowerBound: -4
   upperBound: 4
 --- !u!1 &892878015
@@ -11253,8 +11254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   redScoreDisplay: {fileID: 146441885}
   blueScoreDisplay: {fileID: 1943076616}
-  redPaddle: {fileID: 0}
-  bluePaddle: {fileID: 0}
+  redPaddle: {fileID: 686915817}
+  bluePaddle: {fileID: 845540724}
+  ball: {fileID: 642411965}
 --- !u!4 &892878017
 Transform:
   m_ObjectHideFlags: 0
@@ -11664,13 +11666,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424890338}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1759205182}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!114 &1424890340
 MonoBehaviour:
   m_ObjectHideFlags: 0

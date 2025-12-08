@@ -9,7 +9,7 @@ public class BallLogic : MonoBehaviour
     [SerializeField] 
     float trailTimeOffset;
     public Rigidbody2D ballRB;
-    TrailRenderer trail;
+    public TrailRenderer trail;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
      float initalSpeed = 5.0f;
@@ -22,9 +22,9 @@ public class BallLogic : MonoBehaviour
         launchBall();
     }
 
-    void launchBall()
+    public void launchBall()
     {
-        
+        trail.Clear();
         // Setup inital direction
         bool isStartingLeft = UnityEngine.Random.Range(0.0f, 1.0f) >= 0.5f;
         float x = 1.0f;

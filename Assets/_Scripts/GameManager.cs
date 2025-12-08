@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     TextMeshPro redScoreDisplay, blueScoreDisplay;
     [SerializeField]
     Transform redPaddle, bluePaddle;
+    [SerializeField]
+    BallLogic ball;
     void Start()
     {
         _instance = this;
@@ -39,6 +41,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Restarting!");
         redPaddle.position = new Vector2(redPaddle.position.x, 0);
         bluePaddle.position = new Vector2(bluePaddle.position.x, 0);
+        ball.trail.Clear();
+        ball.ballRB.linearVelocity = Vector2.zero;
+        ball.ballRB.position = Vector2.zero;
+        ball.launchBall();
+        
     }
     void updateDisplays()
     {
