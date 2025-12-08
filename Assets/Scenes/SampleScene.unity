@@ -5634,6 +5634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxBounceAngle: 45
+  move: {fileID: 0}
 --- !u!212 &686915816
 SpriteRenderer:
   serializedVersion: 2
@@ -16641,7 +16642,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759205181}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
