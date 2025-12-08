@@ -23,7 +23,7 @@ public class AIController : MonoBehaviour
             moveInput = -1;
         }
         float moveAmount =  moveInput * moveSpeed * Time.deltaTime;
-        Debug.LogWarning("Move amount AI: " + moveAmount);
+        // Debug.LogWarning("Move amount AI: " + moveAmount);
         transform.position = transform.position + (Vector3.up * moveInput * moveSpeed);
         // applyBounds();
     }

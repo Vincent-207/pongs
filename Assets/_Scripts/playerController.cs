@@ -10,8 +10,8 @@ public class playerController : MonoBehaviour
     void FixedUpdate()
     {
         float moveInput = move.action.ReadValue<Vector2>().y;
-        Debug.Log("Moveinput " + moveInput);
-        Debug.LogWarning("Move amount Player: " + moveInput * moveSpeed * Time.deltaTime);
+        // Debug.Log("Moveinput " + moveInput);
+        // Debug.LogWarning("Move amount Player: " + moveInput * moveSpeed * Time.deltaTime);
         transform.position = transform.position + (Vector3.up * moveInput * moveSpeed);
         applyBounds();
     }

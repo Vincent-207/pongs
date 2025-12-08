@@ -19,7 +19,12 @@ public class BallLogic : MonoBehaviour
     {
         ballRB = GetComponent<Rigidbody2D>();
         trail = GetComponentInChildren<TrailRenderer>();
+        launchBall();
+    }
 
+    void launchBall()
+    {
+        
         // Setup inital direction
         bool isStartingLeft = UnityEngine.Random.Range(0.0f, 1.0f) >= 0.5f;
         float x = 1.0f;
@@ -37,8 +42,6 @@ public class BallLogic : MonoBehaviour
         ballRB.linearVelocity = initialVelocity;
         
     }
-
-
     void OnCollisionEnter2D(Collision2D collision2D)
     {
         ICollideable collideableObj = collision2D.collider.GetComponent<ICollideable>();

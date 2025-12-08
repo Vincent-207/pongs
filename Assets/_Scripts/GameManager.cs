@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     int redScore, blueScore = 0;
     [SerializeField]
     TextMeshPro redScoreDisplay, blueScoreDisplay;
+    [SerializeField]
+    Transform redPaddle, bluePaddle;
     void Start()
     {
         _instance = this;
@@ -32,7 +34,12 @@ public class GameManager : MonoBehaviour
         blueScoreDisplay = transform.GetChild(1).GetComponent<TextMeshPro>();
         updateDisplays();
     }
-
+    void restartRound()
+    {
+        Debug.Log("Restarting!");
+        redPaddle.position = new Vector2(redPaddle.position.x, 0);
+        bluePaddle.position = new Vector2(bluePaddle.position.x, 0);
+    }
     void updateDisplays()
     {
         
@@ -44,11 +51,13 @@ public class GameManager : MonoBehaviour
     {
         redScore++;
         updateDisplays();
+        restartRound();
     }
     void doBlueWin()
     {
         blueScore++;
         updateDisplays();
+        restartRound();
     }
     public static void redWin()
     {
@@ -61,4 +70,6 @@ public class GameManager : MonoBehaviour
     {
         GetInstance().doBlueWin();
     }
+
+
 }

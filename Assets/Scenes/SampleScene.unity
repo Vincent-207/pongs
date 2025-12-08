@@ -5810,7 +5810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   move: {fileID: 123839140}
-  moveSpeed: 1
+  moveSpeed: 0.1
   bottomBound: -4
   topBound: 4
 --- !u!1 &713768449
@@ -11219,7 +11219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ball: {fileID: 642411965}
-  moveSpeed: 1
+  moveSpeed: 0.1
   lowerBound: -4
   upperBound: 4
 --- !u!1 &892878015
@@ -11253,6 +11253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   redScoreDisplay: {fileID: 146441885}
   blueScoreDisplay: {fileID: 1943076616}
+  redPaddle: {fileID: 0}
+  bluePaddle: {fileID: 0}
 --- !u!4 &892878017
 Transform:
   m_ObjectHideFlags: 0
