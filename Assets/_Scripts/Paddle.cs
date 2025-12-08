@@ -1,6 +1,7 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class Paddle : MonoBehaviour, ICollideable
@@ -27,18 +28,17 @@ public class Paddle : MonoBehaviour, ICollideable
         float relativeIntersect = transform.position.y- collisionPoint.point.y;
         float normalizedRelativeIntersect = relativeIntersect/(paddleHeight/2);
         float bounceAngle = normalizedRelativeIntersect * (maxBounceAngle * Mathf.Deg2Rad);
-        Debug.Log(relativeIntersect);
-        Debug.Log(normalizedRelativeIntersect);
-        Debug.Log(bounceAngle);
-        Debug.Log(bounceAngle * Mathf.Rad2Deg);
-
-        // get speed of ball vector
         float ballSpeed = collision2D.otherCollider.GetComponent<Rigidbody2D>().linearVelocity.magnitude;
-
-
+        float normalAngleOffset = Vector2.Angle(collisionPoint.normal, Vector2.right);
+        // Debug.Log("Normal angle offset: " + normalAngleOffset);
+        bounceAngle += normalAngleOffset * Mathf.Deg2Rad;
+        
         Vector2 newBallVelocity = new Vector2(math.cos(bounceAngle) * ballSpeed, math.sin(bounceAngle) * ballSpeed);
-        Debug.DrawRay((Vector2) transform.position + new Vector2(0, paddleHeight/2), newBallVelocity, Color.red);
+        Debug.DrawRay((Vector2) transform.position + new Vector2(0, paddleHeight/2), newBallVelocity * 10, Color.red);
         ball.ballRB.linearVelocity = newBallVelocity;
-        Debug.Break();
+
+        // Debug.Break();
     }
+
+    
 }

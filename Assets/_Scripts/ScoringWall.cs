@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class ScoringWall : MonoBehaviour, ICollideable
 {
+    [SerializeField]   
+    Team team;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +19,25 @@ public class ScoringWall : MonoBehaviour, ICollideable
     public void collide(BallLogic ball, Collision2D collision2D)
     {
         Debug.Log("Score!");
-        GameManager.redWin();
+        if(team == Team.Red)
+        {
+            GameManager.redWin();
+            
+        }
+        else if(team == Team.Blue)
+        {
+            GameManager.blueWin();
+        }
+        else
+        {
+            Debug.LogError("Team not set.");
+            Debug.Break();
+        }
     }
+}
+[Serializable]
+public enum Team
+{
+    Red,
+    Blue,
 }

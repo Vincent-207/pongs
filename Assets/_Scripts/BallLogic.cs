@@ -69,6 +69,6 @@ public class BallLogic : MonoBehaviour
 public interface ICollideable
 {
     void collide(BallLogic ball, Collision2D collision2D);
-    
+
     
 }
