@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _instance = this;
+        Initialise();
         GetInstance();
     }
     void Initialise()
     {
         //do startup stuff
+        // Debug.Log("Initializing!");
         redScoreDisplay = transform.GetChild(0).GetComponent<TextMeshPro>();
         blueScoreDisplay = transform.GetChild(1).GetComponent<TextMeshPro>();
         updateDisplays();
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     void updateDisplays()
     {
-        redScore = 1;
+        
         redScoreDisplay.text = redScore.ToString();
         blueScoreDisplay.text = blueScore.ToString();
     }

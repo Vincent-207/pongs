@@ -36,7 +36,7 @@ public class Wall : MonoBehaviour, ICollideable
         Debug.DrawRay(contactPoint2D.point, contactPoint2D.normal, Color.green);
         Debug.DrawRay(ball.transform.position, ball.ballRB.linearVelocity, Color.yellow);
         Debug.DrawRay(ball.transform.position, bouncedVelocity, Color.red);
-        Debug.Log("Ball SPEED: " + ball.ballRB.linearVelocity); 
+        // Debug.Log("Ball SPEED: " + ball.ballRB.linearVelocity); 
         impactParticle.PlayImpact(contactPoint2D.point, contactPoint2D.normal, 1);
         // ball.ballRB.linearVelocity = bouncedVelocity;
         // Debug.Break();

@@ -29,6 +29,8 @@ public class BallLogic : MonoBehaviour
         }
 
         float y = UnityEngine.Random.Range(-1.0f, 1.0f);
+        x = 1.0f;
+        y = 0;
         Vector2 initialVelocity = new Vector2(x, y);
         initialVelocity = initialVelocity.normalized * initalSpeed;
         launchDir = initialVelocity;
@@ -43,7 +45,7 @@ public class BallLogic : MonoBehaviour
         Debug.LogWarning(collision2D.collider.name);
         if(collideableObj != null)
         {
-            Debug.Log("Found collidable!");
+            // Debug.Log("Found collidable!");
             collideableObj.collide(this, collision2D);
         }
         else
@@ -67,5 +69,6 @@ public class BallLogic : MonoBehaviour
 public interface ICollideable
 {
     void collide(BallLogic ball, Collision2D collision2D);
+    
     
 }
