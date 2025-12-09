@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
         return _instance;
     }
+    [SerializeField]
+    int winScore;
 
     int redScore, blueScore = 0;
     [SerializeField]
@@ -57,12 +59,22 @@ public class GameManager : MonoBehaviour
     void doRedWin()
     {
         redScore++;
+        if(redScore == winScore)
+        {
+            Debug.Log("Red Win!");
+            Debug.Break();
+        }
         updateDisplays();
         restartRound();
     }
     void doBlueWin()
     {
         blueScore++;
+        if(blueScore == winScore)
+        {
+            Debug.Log("Blue win");
+            Debug.Break();
+        }
         updateDisplays();
         restartRound();
     }
