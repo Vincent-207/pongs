@@ -32,8 +32,9 @@ public class Paddle : MonoBehaviour, ICollideable
         float normalAngleOffset = Vector2.Angle(collisionPoint.normal, Vector2.right);
         // Debug.Log("Normal angle offset: " + normalAngleOffset);
         bounceAngle += normalAngleOffset * Mathf.Deg2Rad;
-        
-        Vector2 newBallVelocity = new Vector2(math.cos(bounceAngle) * ballSpeed, math.sin(bounceAngle) * ballSpeed);
+        float speedModifier = Mathf.Log10(1 + ballSpeed) + 1;
+        Debug.Log("Ballspeed: " + ballSpeed);
+        Vector2 newBallVelocity = new Vector2(math.cos(bounceAngle) * ballSpeed, math.sin(bounceAngle) * ballSpeed) * speedModifier;
         Debug.DrawRay((Vector2) transform.position + new Vector2(0, paddleHeight/2), newBallVelocity * 10, Color.red);
         ball.ballRB.linearVelocity = newBallVelocity;
 

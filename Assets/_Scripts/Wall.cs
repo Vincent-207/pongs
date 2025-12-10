@@ -6,6 +6,7 @@ public class Wall : MonoBehaviour, ICollideable
     GameObject impactParticlePrefab;
     [SerializeField]
     int particleSystemPoolSize;
+    [SerializeField]
     ImpactParticle[] impactParticles;
     int currentImpactParticle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,13 +43,12 @@ public class Wall : MonoBehaviour, ICollideable
         Vector2 collisionNormal = collision2D.contacts[0].normal;
         Vector2 bouncedVelocity = Vector2.Reflect(ballVelocity, collisionNormal);
         ContactPoint2D contactPoint2D = collision2D.contacts[0];
+        
         Debug.DrawRay(contactPoint2D.point, contactPoint2D.normal, Color.green);
         Debug.DrawRay(ball.transform.position, ball.ballRB.linearVelocity, Color.yellow);
         Debug.DrawRay(ball.transform.position, bouncedVelocity, Color.red);
-        // Debug.Log("Ball SPEED: " + ball.ballRB.linearVelocity); 
+
         playImpact(contactPoint2D.point, contactPoint2D.normal, 1);
-        // ball.ballRB.linearVelocity = bouncedVelocity;
-        // Debug.Break();
     }
 
     void playImpact(Vector2 position, Vector2 direction, float weight)
@@ -60,6 +60,12 @@ public class Wall : MonoBehaviour, ICollideable
         }
 
         impactParticles[currentImpactParticle].PlayImpact(position, direction, weight);
+
+        currentImpactParticle++;
+        if(currentImpactParticle == impactParticles.Length)
+        {
+            currentImpactParticle = 0;
+        }
         
     }
 }

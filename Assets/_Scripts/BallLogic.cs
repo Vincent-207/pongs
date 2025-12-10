@@ -44,16 +44,16 @@ public class BallLogic : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision2D)
     {
-        ICollideable collideableObj = collision2D.collider.GetComponent<ICollideable>();
-        Debug.LogWarning(collision2D.collider.name);
-        if(collideableObj != null)
+        ICollideable[] collideableObjects = collision2D.collider.GetComponents<ICollideable>();
+
+        foreach (ICollideable collideableObj in collideableObjects)
         {
-            // Debug.Log("Found collidable!");
             collideableObj.collide(this, collision2D);
         }
-        else
+
+        if(collideableObjects == null)
         {
-            Debug.LogError("Couldn't find collidable Interface in collision!");
+            Debug.LogError("Ball collided with something it's not meant to!");
         }
     }
 

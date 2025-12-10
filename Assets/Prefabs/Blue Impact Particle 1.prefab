@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4114331740182421703}
   - component: {fileID: 4183209079928575223}
   - component: {fileID: 8028752121423292598}
-  - component: {fileID: 3446188323590822856}
+  - component: {fileID: 3224465671196460444}
   m_Layer: 0
-  m_Name: Contact Particle
+  m_Name: Blue Impact Particle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4757121360513618023}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -171,8 +171,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 4
+      scalar: 6
+      minScalar: 7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -224,8 +224,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.3773585, g: 0.36845854, b: 0.36845854, a: 1}
-      maxColor: {r: 0.16037738, g: 0.15356891, b: 0.15356891, a: 1}
+      minColor: {r: 0.09803921, g: 0.23026536, b: 0.7647059, a: 1}
+      maxColor: {r: 0.25098038, g: 0.5280829, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -605,7 +605,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 1
+    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -613,7 +613,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4912,7 +4912,7 @@ MonoBehaviour:
   myParticles: {fileID: 4114331740182421703}
   baseSize: 0.05
   sizeRange: 2
---- !u!82 &3446188323590822856
+--- !u!82 &3224465671196460444
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4923,9 +4923,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: b0bfd7172ba700f459a313cbc29c8132, type: 3}
+  m_Resource: {fileID: 8300000, guid: 546f5c801f54dd84681792a44268c9c7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

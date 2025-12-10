@@ -21,12 +21,12 @@ public class ScoringWall : MonoBehaviour, ICollideable
         Debug.Log("Score!");
         if(team == Team.Red)
         {
-            GameManager.redWin();
+            GameManager.blueWin();
             
         }
         else if(team == Team.Blue)
         {
-            GameManager.blueWin();
+            GameManager.redWin();
         }
         else
         {

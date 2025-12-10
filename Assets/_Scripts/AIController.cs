@@ -9,7 +9,14 @@ public class AIController : MonoBehaviour
     float moveSpeed;
     [SerializeField]
     float lowerBound, upperBound;
-    
+    float moveAmount;
+    void Update()
+    {
+        float actualMoveAmount = moveAmount * Time.deltaTime;
+        Vector3 wantedPosition = new Vector3(transform.position.x, transform.position.y + actualMoveAmount);
+        transform.position = wantedPosition;
+        applyBounds();
+    }
     void FixedUpdate()
     {
         float yDifference = (ball.transform.position - transform.position).y;
@@ -25,7 +32,7 @@ public class AIController : MonoBehaviour
         float moveAmount =  moveInput * moveSpeed * Time.deltaTime;
         // Debug.LogWarning("Move amount AI: " + moveAmount);
         transform.position = transform.position + (Vector3.up * moveInput * moveSpeed);
-        // applyBounds();
+
     }
 
     void applyBounds()
