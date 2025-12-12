@@ -21,7 +21,7 @@ public class ScreenShakeManager : MonoBehaviour
     IEnumerator Shake()
     {
         
-        Vector3 startPosition = transform.position;
+        Vector3 startPosition = Camera.main.transform.position;
         float elapsedTime= 0f;
         while(elapsedTime < duration)
         {
@@ -29,6 +29,11 @@ public class ScreenShakeManager : MonoBehaviour
             transform.position = startPosition + Random.insideUnitSphere * shakeCurve.Evaluate(elapsedTime/duration);
             yield return null;
         }
-        transform.position = targetTransform.position;
+        Camera.main.transform.position = targetTransform.position;
+    }
+
+    public void DoStart()
+    {
+        start = true;
     }
 }

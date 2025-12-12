@@ -1402,6 +1402,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  shakeDuration: 0.1
+  shakeScalar: 0.1
 --- !u!1 &713768449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,6 +1917,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  shakeDuration: 0.1
+  shakeScalar: 0.1
 --- !u!1 &892878015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,7 +2087,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.1
+  m_Time: 0.2
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3

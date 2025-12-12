@@ -13,10 +13,11 @@ public class ImpactEffectHandler : MonoBehaviour, ICollideable
     Camera myCam;
     [Header("Screen Shake")]
     public AnimationCurve shakeCurve;
-    float shakeStrength;
-    float shakeDuration = 1f;
-    bool doShake;
-    
+    [SerializeField]
+    float shakeDuration = 0.1f;
+    [SerializeField]
+    float shakeScalar = 0.1f;
+    bool startShake = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,28 +34,6 @@ public class ImpactEffectHandler : MonoBehaviour, ICollideable
     // Update is called once per frame
     void Update()
     {
-        if(doShake)
-        {
-            doShake = false;
-            StartCoroutine(Shaking());
-        }
-    }
-    IEnumerator Shaking()
-    {
-        Vector3 startPosition = myCam.transform.position;
-        float elapsedTime = 0f;
-        Debug.Log("running");
-        while(elapsedTime < shakeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            Vector3 added = (Vector3) (Random.insideUnitSphere * shakeStrength * shakeCurve.Evaluate(elapsedTime / shakeDuration));
-            // Debug.Log("Added: " + added);
-            myCam.transform.position = startPosition + added;
-            yield return null;
-            
-        }
-
-        myCam.transform.position = startPosition;
     }
     public void collide(BallLogic ball, Collision2D collision2D)
     {
@@ -65,10 +44,14 @@ public class ImpactEffectHandler : MonoBehaviour, ICollideable
         ContactPoint2D contactPoint2D = collision2D.contacts[0];
         
         
-        
-        playImpact(contactPoint2D.point, contactPoint2D.normal, 1);
-        doShake = true;
+        float weight = (contactPoint2D.normalImpulse - 5) / 10;
+        playImpact(contactPoint2D.point, contactPoint2D.normal, weight);
         // StartCoroutine(Shaking());
+
+        if(startShake)
+        {
+            StartCoroutine(ScreenShake(weight));
+        }
     }
 
     void drawDebugRays(BallLogic ball, Collision2D collision2D)
@@ -84,6 +67,7 @@ public class ImpactEffectHandler : MonoBehaviour, ICollideable
 
     void playImpact(Vector2 position, Vector2 direction, float weight)
     {
+        Debug.Log("Weight: " + weight);
         if(impactParticles[currentImpactParticle].GetComponent<ParticleSystem>().isPlaying)
         {
             Debug.LogWarning("Not enough particles, interrupting this system");
@@ -91,12 +75,26 @@ public class ImpactEffectHandler : MonoBehaviour, ICollideable
         }
 
         impactParticles[currentImpactParticle].PlayImpact(position, direction, weight);
-
+        
         currentImpactParticle++;
         if(currentImpactParticle == impactParticles.Length)
         {
             currentImpactParticle = 0;
         }
-        
+        startShake = true;
+    }
+
+    IEnumerator ScreenShake(float weight)
+    {
+        Transform cameraTransform = Camera.main.transform;
+        Vector3 startPosition = cameraTransform.position;
+        float elapsedTime= 0f;
+        while(elapsedTime < shakeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            cameraTransform.position = startPosition + Random.insideUnitSphere * shakeCurve.Evaluate(elapsedTime/shakeDuration) * shakeScalar;
+            yield return null;
+        }
+        cameraTransform.position = startPosition;
     }
 }

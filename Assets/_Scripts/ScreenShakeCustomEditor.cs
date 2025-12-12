@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CustomEditor(typeof(ScreenShakeManager))]
+// [CustomEditor(typeof(ScreenShakeManager))]
 public class ScreenShakeCustomEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -12,7 +12,7 @@ public class ScreenShakeCustomEditor : Editor
         ScreenShakeManager screenShakeManager = (ScreenShakeManager)target;
         if(GUILayout.Button("Start shake"))
         {
-            screenShakeManager.StartShake();
+            // screenShakeManager.StartShake();
         }
     }
 }

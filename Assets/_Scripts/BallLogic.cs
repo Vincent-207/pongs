@@ -65,7 +65,7 @@ public class BallLogic : MonoBehaviour
     }
     void Update()
     {
-        updateTrailLength();
+        // updateTrailLength();
     }
 }
 
