@@ -455,9 +455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817362e0ecc473f4889b3bd3c1962b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wall
-  impactParticlePrefab: {fileID: 4757121360513618023, guid: 56c5d748fb6f9864a90fcbd7a36d434b, type: 3}
-  particleSystemPoolSize: 5
-  impactParticles: []
 --- !u!50 &404278044
 Rigidbody2D:
   serializedVersion: 5
@@ -637,9 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817362e0ecc473f4889b3bd3c1962b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wall
-  impactParticlePrefab: {fileID: 4757121360513618023, guid: 56c5d748fb6f9864a90fcbd7a36d434b, type: 3}
-  particleSystemPoolSize: 5
-  impactParticles: []
 --- !u!50 &503584139
 Rigidbody2D:
   serializedVersion: 5
@@ -1398,12 +1392,30 @@ MonoBehaviour:
   impactParticles: []
   shakeCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0028076
+      value: 0.0032958984
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   shakeDuration: 0.1
-  shakeScalar: 0.1
+  shakeScalar: 0.05
 --- !u!1 &713768449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1509,7 @@ GameObject:
   - component: {fileID: 774034947}
   - component: {fileID: 774034948}
   - component: {fileID: 774034949}
+  - component: {fileID: 774034950}
   m_Layer: 0
   m_Name: Blue wall
   m_TagString: Untagged
@@ -1676,9 +1689,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817362e0ecc473f4889b3bd3c1962b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wall
+--- !u!114 &774034950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774034943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7c16aa31d92044ab79f4c35fe73e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactEffectHandler
   impactParticlePrefab: {fileID: 4757121360513618023, guid: ced5ae71f27d02748b5f714affd3fa68, type: 3}
-  particleSystemPoolSize: 5
+  particleSystemPoolSize: 1
   impactParticles: []
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0028076
+      value: 0.0032958984
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shakeDuration: 0.1
+  shakeScalar: 0.1
 --- !u!1 &845540718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1969,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   shakeDuration: 0.1
-  shakeScalar: 0.1
+  shakeScalar: 0.05
 --- !u!1 &892878015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,6 +2719,7 @@ GameObject:
   - component: {fileID: 1123337201}
   - component: {fileID: 1123337202}
   - component: {fileID: 1123337203}
+  - component: {fileID: 1123337204}
   m_Layer: 0
   m_Name: Red wall
   m_TagString: Untagged
@@ -2829,7 +2881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123337197}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40d94e0d65a23e4a901665e7949f9d3, type: 3}
   m_Name: 
@@ -2847,9 +2899,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817362e0ecc473f4889b3bd3c1962b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wall
+--- !u!114 &1123337204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123337197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7c16aa31d92044ab79f4c35fe73e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactEffectHandler
   impactParticlePrefab: {fileID: 4757121360513618023, guid: c4d2d0ec12e79544eabc862097096407, type: 3}
-  particleSystemPoolSize: 5
+  particleSystemPoolSize: 1
   impactParticles: []
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0028076
+      value: 0.0032958984
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shakeDuration: 0.1
+  shakeScalar: 0.1
 --- !u!1 &1293610742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,6 +3353,7 @@ GameObject:
   - component: {fileID: 1696844622}
   - component: {fileID: 1696844623}
   - component: {fileID: 1696844624}
+  - component: {fileID: 1696844625}
   m_Layer: 0
   m_Name: Bottom wall
   m_TagString: Untagged
@@ -3429,9 +3520,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817362e0ecc473f4889b3bd3c1962b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wall
+--- !u!114 &1696844625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696844619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7c16aa31d92044ab79f4c35fe73e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactEffectHandler
   impactParticlePrefab: {fileID: 4757121360513618023, guid: 56c5d748fb6f9864a90fcbd7a36d434b, type: 3}
   particleSystemPoolSize: 5
   impactParticles: []
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0028076
+      value: 0.0032958984
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shakeDuration: 0.1
+  shakeScalar: 0.025
 --- !u!1 &1759205181
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,6 +3574,7 @@ GameObject:
   - component: {fileID: 1759205184}
   - component: {fileID: 1759205185}
   - component: {fileID: 1759205186}
+  - component: {fileID: 1759205187}
   m_Layer: 0
   m_Name: Top wall
   m_TagString: Untagged
@@ -3611,9 +3741,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817362e0ecc473f4889b3bd3c1962b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wall
+--- !u!114 &1759205187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759205181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7c16aa31d92044ab79f4c35fe73e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactEffectHandler
   impactParticlePrefab: {fileID: 4757121360513618023, guid: 56c5d748fb6f9864a90fcbd7a36d434b, type: 3}
   particleSystemPoolSize: 5
   impactParticles: []
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0028076
+      value: 0.0032958984
+      inSlope: -0.9939136
+      outSlope: -0.9939136
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shakeDuration: 0.1
+  shakeScalar: 0.025
 --- !u!1 &1943076614
 GameObject:
   m_ObjectHideFlags: 0
