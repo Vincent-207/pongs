@@ -12,4 +12,24 @@ public class UI_Manager : MonoBehaviour
         }
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
+
+    public void loadSceneIndex(int sceneIndex)
+    {
+        if(sceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.LogError("Scene index incorrect, aborting transisiton!");
+            return;
+        }
+
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void loadPreviousGame()
+    {
+        SceneManager.LoadScene(GameInfo.gameSceneIndex);
+    }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
