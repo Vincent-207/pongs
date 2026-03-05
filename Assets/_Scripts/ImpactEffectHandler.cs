@@ -44,7 +44,7 @@ public class ImpactEffectHandler : MonoBehaviour, ICollideable
         ContactPoint2D contactPoint2D = collision2D.contacts[0];
         
         
-        float weight = (contactPoint2D.normalImpulse - 5) / 10;
+        float weight = (contactPoint2D.normalImpulse - 5) / 5;
         playImpact(contactPoint2D.point, contactPoint2D.normal, weight);
         // StartCoroutine(Shaking());
 

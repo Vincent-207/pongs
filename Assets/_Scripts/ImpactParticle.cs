@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ImpactParticle : MonoBehaviour
@@ -35,7 +36,17 @@ public class ImpactParticle : MonoBehaviour
         updateSizeCurve(weight);
         transform.rotation = Quaternion.LookRotation(emitDirection, Vector3.up);
         myParticles.Play();
-        hitSound.Play();
+        playSound(hitSound);
+    }
+
+    void playSound(AudioSource audioSource)
+    {
+        float basePitch = 1f;
+        
+        float randomizedPitch = basePitch + UnityEngine.Random.Range(-0.2f, 0.2f);
+        Debug.Log("Playing at: " + randomizedPitch);
+        audioSource.pitch = randomizedPitch;
+        audioSource.Play();
     }
     public bool isPlaying()
     {

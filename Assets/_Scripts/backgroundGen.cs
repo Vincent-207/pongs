@@ -1,7 +1,5 @@
-using UnityEditor.ShaderGraph.Internal;
-using UnityEditor.Tilemaps;
+
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class backgroundGen : MonoBehaviour
 {

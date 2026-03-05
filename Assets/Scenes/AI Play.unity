@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c339e98d1230fc42845e435a11f1d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  winScore: 1
+  winScore: 3
   redScoreDisplay: {fileID: 146441885}
   blueScoreDisplay: {fileID: 1943076616}
   redPaddle: {fileID: 686915817}

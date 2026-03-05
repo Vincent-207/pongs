@@ -1,5 +1,4 @@
-using UnityEditor.AdaptivePerformance.Editor;
-using UnityEditor.Build;
+
 using UnityEngine;
 
 public class GameInfo : MonoBehaviour
